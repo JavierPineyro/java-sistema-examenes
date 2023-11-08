@@ -26,7 +26,7 @@ public class SeguridadConJwtApplication {
 	@Autowired
 	UserRepository userRepository;
 
-	@Bean
+	/*@Bean
 	CommandLineRunner init(){
 		return args -> {
 			UserEntity userEntity = UserEntity.builder()
@@ -51,5 +51,5 @@ public class SeguridadConJwtApplication {
 			userRepository.save(userEntity2);
 
 		};
-	}
+	}*/
 }

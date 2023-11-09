@@ -55,6 +55,7 @@ public class PrincipalController {
     }
 
     @DeleteMapping("/deleteUser")
+    @PreAuthorize("hasRole('ADMIN')")
     public String deleteUser(@RequestParam String id){
         userRepo.deleteById(Long.parseLong(id));
         return "Se ha borrado el usuario con id: ".concat(id);

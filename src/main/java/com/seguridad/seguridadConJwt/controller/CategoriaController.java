@@ -4,6 +4,7 @@ import com.seguridad.seguridadConJwt.models.CategoriaEntity;
 import com.seguridad.seguridadConJwt.service.CategoriaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,6 +16,7 @@ public class CategoriaController {
     private CategoriaService categoriaService;
 
     @PostMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoriaEntity> guardarCategoria(@RequestBody CategoriaEntity categoria){
         CategoriaEntity savedCategoria = categoriaService.createCategoria(categoria);
         return ResponseEntity.ok(savedCategoria);
@@ -31,11 +33,13 @@ public class CategoriaController {
     }
 
     @PutMapping("/")
+    @PreAuthorize("hasRole('ADMIN')")
     public CategoriaEntity actualizarCategoria(@RequestBody CategoriaEntity categoria){
         return categoriaService.updateCategoria(categoria);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public void eliminarCategoria(@PathVariable("id") Long id){
         categoriaService.deleteCategoria(id);
     }

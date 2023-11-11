@@ -23,7 +23,7 @@ public class CategoriaEntity {
     private String titulo;
     private String descripcion;
 
-    @OneToMany(mappedBy = "categoria", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "categoria",orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<ExamenEntity> examenes = new LinkedHashSet<>();
 }

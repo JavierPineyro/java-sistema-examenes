@@ -31,7 +31,7 @@ public class ExamenEntity {
     @ManyToOne(fetch = FetchType.EAGER)
     private CategoriaEntity categoria;
 
-    @OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "examen", fetch = FetchType.LAZY, orphanRemoval = true, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<PreguntaEntity> preguntas = new HashSet<>();
 }

@@ -37,10 +37,8 @@ public class CategoriaServiceImpl implements CategoriaService {
 
     @Override
     public void deleteCategoria(Long id) {
-        categoriaRepository.deleteById(id);
-       /*
         CategoriaEntity categoria = new CategoriaEntity();
         categoria.setId(id);
-        categoriaRepository.delete(categoria);*/
+        categoriaRepository.delete(categoria);
     }
 }

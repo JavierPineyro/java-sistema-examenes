@@ -37,12 +37,12 @@ public class ExamenServiceImpl implements ExamenService {
 
     @Override
     public void deleteExamen(Long id) {
-        examenRepository.deleteById(id);
+        // examenRepository.deleteById(id);
 
         // en caso de que no funcione lo de arriba
 
-        /*ExamenEntity examen = new ExamenEntity();
+        ExamenEntity examen = new ExamenEntity();
         examen.setId(id);
-        examenRepository.delete(examen);*/
+        examenRepository.delete(examen);
     }
 }

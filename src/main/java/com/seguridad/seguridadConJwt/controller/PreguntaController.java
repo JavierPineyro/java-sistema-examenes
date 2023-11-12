@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @RestController
 @RequestMapping("/api/pregunta")
@@ -57,6 +54,34 @@ public class PreguntaController {
     @DeleteMapping("/{id}")
     public void eliminarPregunta(@PathVariable("id") Long id){
         preguntaService.deletePregunta(id);
+    }
+
+    @PostMapping("/evaluar-examen")
+    public ResponseEntity<?> evaluarExamen(@RequestBody List<PreguntaEntity> preguntas){
+        double puntosMaximos = 0;
+        Integer respuestasCorrectas = 0;
+        Integer intentos = 0;
+
+        for (PreguntaEntity pregunta : preguntas){
+            PreguntaEntity question = preguntaService.listarPregunta(pregunta.getId());
+
+            if(question.getRespuesta().equals(pregunta.getRespuestaDada())){
+                respuestasCorrectas++;
+                double puntos = Double.parseDouble(preguntas.get(0).getExamen().getPuntosMaximos())/ preguntas.size();
+                puntosMaximos += puntos;
+            }
+
+            if(pregunta.getRespuestaDada() != null){
+                intentos++;
+            }
+        }
+
+        Map<String, Object> respuestas = new HashMap<>();
+        respuestas.put("puntosMaximos", puntosMaximos);
+        respuestas.put("respuestasCorrectas", respuestasCorrectas);
+        respuestas.put("intentos", intentos);
+
+        return ResponseEntity.ok(respuestas);
     }
 
 }

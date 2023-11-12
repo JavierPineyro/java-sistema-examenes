@@ -19,4 +19,6 @@ public interface PreguntaService {
 
     void deletePregunta(Long id);
 
+    PreguntaEntity listarPregunta(Long id);
+
 }

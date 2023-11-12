@@ -25,6 +25,9 @@ public class PreguntaEntity {
     private String opcion4;
     private String respuesta;
 
+    @Transient
+    private String respuestaDada;
+
     @ManyToOne(fetch = FetchType.EAGER)
     private ExamenEntity examen;
 

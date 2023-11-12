@@ -16,4 +16,8 @@ public interface ExamenService {
 
     List<ExamenEntity> getExamenesFromCategoria(CategoriaEntity categoria);
 
+    List<ExamenEntity> getExamenesByActivo();
+
+    List<ExamenEntity> getExamenesByActivoFromCategoria(CategoriaEntity categoria);
+
 }

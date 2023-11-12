@@ -1,10 +1,13 @@
 package com.seguridad.seguridadConJwt.controller;
 
+import com.seguridad.seguridadConJwt.models.CategoriaEntity;
 import com.seguridad.seguridadConJwt.models.ExamenEntity;
 import com.seguridad.seguridadConJwt.service.ExamenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/examen")
@@ -37,5 +40,12 @@ public class ExamenController {
     @DeleteMapping("/{id}")
     public void eliminarExamen(@PathVariable("id") Long id){
         examenService.deleteExamen(id);
+    }
+
+    @GetMapping("/categoria/{id}")
+    public List<ExamenEntity> listarExamenesPorCategoria(@PathVariable("id") Long id){
+        CategoriaEntity categoria = new CategoriaEntity();
+        categoria.setId(id);
+        return examenService.getExamenesFromCategoria(categoria);
     }
 }

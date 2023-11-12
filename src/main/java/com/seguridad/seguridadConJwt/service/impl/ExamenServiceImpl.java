@@ -1,5 +1,6 @@
 package com.seguridad.seguridadConJwt.service.impl;
 
+import com.seguridad.seguridadConJwt.models.CategoriaEntity;
 import com.seguridad.seguridadConJwt.models.ExamenEntity;
 import com.seguridad.seguridadConJwt.repositories.ExamenRepository;
 import com.seguridad.seguridadConJwt.service.ExamenService;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -40,9 +42,15 @@ public class ExamenServiceImpl implements ExamenService {
         // examenRepository.deleteById(id);
 
         // en caso de que no funcione lo de arriba
-
         ExamenEntity examen = new ExamenEntity();
         examen.setId(id);
         examenRepository.delete(examen);
     }
+
+    @Override
+    public List<ExamenEntity> getExamenesFromCategoria(CategoriaEntity categoria) {
+        return examenRepository.findByCategoria(categoria);
+    }
+
+
 }

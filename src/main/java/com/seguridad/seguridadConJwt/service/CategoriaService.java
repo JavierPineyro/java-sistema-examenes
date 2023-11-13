@@ -2,6 +2,7 @@ package com.seguridad.seguridadConJwt.service;
 
 import com.seguridad.seguridadConJwt.models.CategoriaEntity;
 
+import java.util.List;
 import java.util.Set;
 
 public interface CategoriaService {
@@ -11,4 +12,6 @@ public interface CategoriaService {
     Set<CategoriaEntity> getAllCategorias();
     CategoriaEntity getCategoria(Long id);
     void deleteCategoria(Long id);
+
+    List<CategoriaEntity> getCategoriaByTitulo(String query);
 }

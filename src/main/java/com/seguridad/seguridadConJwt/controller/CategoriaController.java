@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/categoria")
 @CrossOrigin("*")
@@ -42,5 +44,11 @@ public class CategoriaController {
     @PreAuthorize("hasRole('ADMIN')")
     public void eliminarCategoria(@PathVariable("id") Long id){
         categoriaService.deleteCategoria(id);
+    }
+
+
+    @GetMapping("/titulo")
+    public List<CategoriaEntity> listarCategoriasPorTitulo(@RequestParam(required = false) String query){
+        return categoriaService.getCategoriaByTitulo(query);
     }
 }

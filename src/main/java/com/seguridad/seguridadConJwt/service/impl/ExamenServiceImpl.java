@@ -62,5 +62,15 @@ public class ExamenServiceImpl implements ExamenService {
         return examenRepository.findByCategoriaAndActivo(categoria, true);
     }
 
+    @Override
+    public List<ExamenEntity> getExamenesByTitulo(String titulo) {
+        return examenRepository.findByTituloContainingIgnoreCase(titulo);
+    }
+
+    @Override
+    public List<ExamenEntity> getExamenesFromCategoriaAndTituloContainingQuery(CategoriaEntity categoria, String query) {
+        return examenRepository.findByCategoriaAndTituloContainingIgnoreCase(categoria, query);
+    }
+
 
 }

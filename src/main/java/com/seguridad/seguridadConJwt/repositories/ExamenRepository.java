@@ -13,4 +13,8 @@ public interface ExamenRepository extends JpaRepository<ExamenEntity, Long> {
     List<ExamenEntity> findByActivo(Boolean estado);
 
     List<ExamenEntity> findByCategoriaAndActivo(CategoriaEntity categoria, Boolean estado);
+
+    List<ExamenEntity> findByTituloContainingIgnoreCase(String query);
+
+    List<ExamenEntity> findByCategoriaAndTituloContainingIgnoreCase(CategoriaEntity categoria, String query);
 }

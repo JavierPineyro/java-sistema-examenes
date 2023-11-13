@@ -60,4 +60,16 @@ public class ExamenController {
         categoria.setId(id);
         return examenService.getExamenesByActivoFromCategoria(categoria);
     }
+
+    @GetMapping("/titulo")
+    public List<ExamenEntity> listarExamenesPorTitutlo(@RequestParam(required = false) String query){
+        return examenService.getExamenesByTitulo(query);
+    }
+
+    @GetMapping("/categoria/{id}/titulo")
+    public List<ExamenEntity> listarExamenesDeCategoriaPorTitulo(@PathVariable("id") Long id, @RequestParam(required = false) String query){
+        CategoriaEntity categoria = new CategoriaEntity();
+        categoria.setId(id);
+        return examenService.getExamenesFromCategoriaAndTituloContainingQuery(categoria, query);
+    }
 }

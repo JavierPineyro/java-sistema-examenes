@@ -20,4 +20,8 @@ public interface ExamenService {
 
     List<ExamenEntity> getExamenesByActivoFromCategoria(CategoriaEntity categoria);
 
+    List<ExamenEntity> getExamenesByTitulo(String titulo);
+
+    List<ExamenEntity> getExamenesFromCategoriaAndTituloContainingQuery(CategoriaEntity categoria, String query);
+
 }
